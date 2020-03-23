@@ -24,6 +24,7 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
 
     //botões de operações
     private Button btnC;
+    private Button btnCE;
     private Button btnDivisao;
     private Button btnMultiplicacao;
     private Button btnAdicao;
@@ -70,6 +71,7 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
         this.btnSubtracao = findViewById(R.id.button_subtracao);
         this.btnIgual = findViewById(R.id.button_igual);
         this.btnPotencial = findViewById(R.id.button_potencia);
+        this.btnCE = findViewById(R.id.button_ce);
 
         this.btnC.setOnClickListener(this);
         this.btnDivisao.setOnClickListener(this);
@@ -78,6 +80,7 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
         this.btnSubtracao.setOnClickListener(this);
         this.btnIgual.setOnClickListener(this);
         this.btnPotencial.setOnClickListener(this);
+        this.btnCE.setOnClickListener(this);
     }
 
     public void initOperador() {
@@ -113,37 +116,43 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
           || v == btnSubtracao || v == btnIgual || v == btnPotencial){
             this.operacoes(v);
         }else{
-            if(v == btnZero){
-                this.valor += "0";
-            }else if(v == btnUm){
-                this.valor += "1";
-            }else if(v == btnDois){
-                this.valor += "2";
-            }else if(v == btnTres){
-                this.valor += "3";
-            }else if(v == btnQuatro){
-                this.valor += "4";
-            }else if(v == btnCinco){
-                this.valor += "5";
-            }else if(v == btnSeis){
-                this.valor += "6";
-            }else if(v == btnSete){
-                this.valor += "7";
-            }else if(v == btnOito){
-                this.valor += "8";
-            }else if(v == btnNove){
-                this.valor += "9";
-            }else if(v == btnPonto){
-                this.valor += ".";
-            }else if(v == btnC){
-                this.valor = "0";
-                this.initValores();
-                this.cal.c();
-            }
-            this.mostrarResultado(Float.parseFloat(this.valor));
+            this.operadores(v);
         }
 
 
+    }
+
+    private void operadores(View v){
+        if(v == btnZero){
+            this.valor += "0";
+        }else if(v == btnUm){
+            this.valor += "1";
+        }else if(v == btnDois){
+            this.valor += "2";
+        }else if(v == btnTres){
+            this.valor += "3";
+        }else if(v == btnQuatro){
+            this.valor += "4";
+        }else if(v == btnCinco){
+            this.valor += "5";
+        }else if(v == btnSeis){
+            this.valor += "6";
+        }else if(v == btnSete){
+            this.valor += "7";
+        }else if(v == btnOito){
+            this.valor += "8";
+        }else if(v == btnNove){
+            this.valor += "9";
+        }else if(v == btnPonto){
+            this.valor += ".";
+        }else if(v == btnC){
+            this.valor = "0";
+            this.initValores();
+            this.cal.c();
+        }else if(v == btnCE){
+            this.valor = "0";
+        }
+        this.mostrarResultado(Float.parseFloat(this.valor));
     }
 
     private void operacoes(View v){
@@ -151,6 +160,8 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
         //mostro uma mensagem de erro.
         if(this.operacao == Constantes.DIVISAO && Float.parseFloat(this.valor) == 0){
             Toast.makeText(this, "Entrada inválida", Toast.LENGTH_SHORT).show();
+            this.cal.c();
+            this.initValores();
             this.mostrarResultado(0);
         }else{
             if(v == btnDivisao){
