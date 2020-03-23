@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Calculadora DMOS5</string>
+    <string name="textview_inicio">0.0</string>
+    <string name="btn_c">c</string>
+    <string name="btn_ce">ce</string>
+    <string name="btn_potencia">^</string>
+    <string name="btn_divisao">/</string>
+    <string name="btn_sete">7</string>
+    <string name="btn_oito">8</string>
+    <string name="btn_nove">9</string>
+    <string name="btn_multiplicacao">x</string>
+    <string name="btn_quatro">4</string>
+    <string name="btn_cinco">5</string>
+    <string name="btn_seis">6</string>
+    <string name="btn_menos">-</string>
+    <string name="btn_um">1</string>
+    <string name="btn_dois">2</string>
+    <string name="btn_tres">3</string>
+    <string name="btn_mais">+</string>
+    <string name="btn_zero">0</string>
+    <string name="btn_ponto">.</string>
+    <string name="btn_igual">=</string>
+</resources>
