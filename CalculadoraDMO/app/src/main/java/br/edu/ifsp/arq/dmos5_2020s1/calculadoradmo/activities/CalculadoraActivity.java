@@ -29,7 +29,7 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
     private Button btnAdicao;
     private Button btnSubtracao;
     private Button btnIgual;
-
+    private Button btnPotencial;
     //botoes de numeros;
     private Button btnZero;
     private Button btnUm;
@@ -48,10 +48,7 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculadora);
 
-
-
         this.txtViewvalor = findViewById(R.id.textview_lcd);
-
         this.valor = "";
         this.initValores();
         this.initOperacoes();
@@ -72,6 +69,7 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
         this.btnAdicao = findViewById(R.id.button_adicao);
         this.btnSubtracao = findViewById(R.id.button_subtracao);
         this.btnIgual = findViewById(R.id.button_igual);
+        this.btnPotencial = findViewById(R.id.button_potencia);
 
         this.btnC.setOnClickListener(this);
         this.btnDivisao.setOnClickListener(this);
@@ -79,6 +77,7 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
         this.btnAdicao.setOnClickListener(this);
         this.btnSubtracao.setOnClickListener(this);
         this.btnIgual.setOnClickListener(this);
+        this.btnPotencial.setOnClickListener(this);
     }
 
     public void initOperador() {
@@ -111,7 +110,7 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
 
         if(v == btnDivisao || v == btnMultiplicacao || v == btnAdicao
-          || v == btnSubtracao || v == btnIgual){
+          || v == btnSubtracao || v == btnIgual || v == btnPotencial){
             this.operacoes(v);
         }else{
             if(v == btnZero){
@@ -142,7 +141,6 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
                 this.cal.c();
             }
             this.mostrarResultado(Float.parseFloat(this.valor));
-            //this.txtViewvalor.setText(this.valor);
         }
 
 
@@ -165,11 +163,13 @@ public class CalculadoraActivity extends AppCompatActivity implements View.OnCli
                 this.operacao = Constantes.SUBTRACAO;
             }else if(v == btnIgual){
                 this.operacao = Constantes.RESULTADO;
+            }else if(v == btnPotencial){
+                this.operacao = Constantes.POTENCIA;
             }
             this.calcular();
-            this.valor = "0";
         }
 
+        this.valor = "0";
     }
 
     private void calcular(){
